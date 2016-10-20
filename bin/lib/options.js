@@ -23,6 +23,14 @@ module.exports = [
     prompt: true
   },
   {
+    name: 'uri',
+    question: 'Solid server uri (with protocol/hostname/port)',
+    help: "Solid server uri (default: 'https://localhost:8443')",
+    default: 'https://localhost:8443',
+    validate: validUri,
+    prompt: true
+  },
+  {
     name: 'webid',
     help: 'Enable WebID authentication and access control (uses HTTPS)',
     flag: true,
@@ -56,6 +64,16 @@ module.exports = [
       return answers.webid
     }
   },
+  {
+    name: 'oidc-issuer',
+    help: 'OpenID Connect Provider hostname',
+    prompt: true,
+    default: 'https://localhost:3000',
+    when: (answers) => {
+      return answers.auth === 'oidc'
+    }
+  },
+
   {
     name: 'useOwner',
     question: 'Do you already have a WebID?',
@@ -283,4 +301,11 @@ function validPath (value) {
       return resolve(true)
     })
   })
+}
+
+function validUri (value) {
+  if (value === '' || !value.startsWith('http')) {
+    return 'Enter a valid uri'
+  }
+  return true
 }
