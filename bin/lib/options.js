@@ -23,7 +23,7 @@ module.exports = [
     prompt: true
   },
   {
-    name: 'uri',
+    name: 'serverUri',
     question: 'Solid server uri (with protocol/hostname/port)',
     help: "Solid server uri (default: 'https://localhost:8443')",
     default: 'https://localhost:8443',
@@ -65,15 +65,14 @@ module.exports = [
     }
   },
   {
-    name: 'oidc-issuer',
-    help: 'OpenID Connect Provider hostname',
+    name: 'oidcProviderUri',
+    help: 'OpenID Connect Provider URI (typically, same as the Solid server URI)',
     prompt: true,
-    default: 'https://localhost:3000',
+    default: 'https://localhost:8443',
     when: (answers) => {
       return answers.auth === 'oidc'
     }
   },
-
   {
     name: 'useOwner',
     question: 'Do you already have a WebID?',

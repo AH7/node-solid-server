@@ -5,15 +5,17 @@ const supertest = require('supertest')
 const expect = require('chai').expect
 // In this test we always assume that we are Alice
 
-describe('API', () => {
+describe.skip('API', () => {
   let aliceServer
   let alice
+  let serverUri = 'https://localhost:5000'
 
   const alicePod = Solid.createServer({
     root: path.join(__dirname, '/resources/accounts-scenario/alice'),
     sslKey: path.join(__dirname, '/keys/key.pem'),
     sslCert: path.join(__dirname, '/keys/cert.pem'),
     auth: 'oidc',
+    serverUri,
     dataBrowser: false,
     fileBrowser: false,
     webid: true
@@ -23,7 +25,7 @@ describe('API', () => {
     parallel([
       (cb) => {
         aliceServer = alicePod.listen(5000, cb)
-        alice = supertest('https://localhost:5000')
+        alice = supertest(serverUri)
       }
     ], done)
   })
