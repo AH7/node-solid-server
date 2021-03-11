@@ -47,7 +47,7 @@
     "inquirer": "^1.0.2",
     "ip-range-check": "0.0.1",
     "is-ip": "^1.0.0",
-    "jsonld": "^0.4.5",
+    "jsonld": "^4.0.0",
     "li": "^1.0.1",
     "mime-types": "^2.1.11",
     "moment": "^2.13.0",
