@@ -44,7 +44,7 @@
     "from2": "^2.1.0",
     "fs-extra": "^0.30.0",
     "glob": "^7.0.0",
-    "inquirer": "^1.0.2",
+    "inquirer": "^3.2.0",
     "ip-range-check": "0.0.1",
     "is-ip": "^1.0.0",
     "jsonld": "^0.4.5",
